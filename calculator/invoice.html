@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Professional Invoice</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 50px;
+            color: #2c3e50;
+            background-color: #fff;
+        }
+        .invoice-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        .company-details h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #3498db;
+        }
+        .company-details p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        .invoice-details {
+            text-align: right;
+        }
+        .invoice-details h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #2c3e50;
+        }
+        .invoice-meta {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .invoice-meta td {
+            padding: 3px 8px;
+            text-align: right;
+        }
+        .invoice-meta td:first-child {
+            font-weight: bold;
+            color: #7f8c8d;
+            text-align: right;
+            padding-right: 15px;
+        }
+        .client-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 25px 0;
+        }
+        .client-section h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        .client-section p {
+            margin: 5px 0;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 14px;
+            page-break-inside: avoid;
+        }
+        .items-table th {
+            background-color: #3498db;
+            color: white;
+            text-align: left;
+            padding: 15px 12px;
+            font-weight: bold;
+        }
+        .items-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .items-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .items-table .text-right {
+            text-align: right;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .summary-table {
+            width: 40%;
+            margin-left: auto;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .summary-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .summary-table tr.grand-total td {
+            font-weight: bold;
+            border-top: 2px solid #2c3e50;
+            font-size: 16px;
+            background-color: #ecf0f1;
+        }
+        .notes-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .notes-section h4 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #7f8c8d;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+        }
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+            .invoice-container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="company-details">
+                <h1>YOUR COMPANY NAME</h1>
+                <p>123 Business Avenue, Suite 100</p>
+                <p>New York, NY 10001</p>
+                <p>Phone: (555) 123-4567</p>
+                <p>Email: billing@yourcompany.com</p>
+            </div>
+            
+            <div class="invoice-details">
+                <h2>INVOICE</h2>
+                <table class="invoice-meta">
+                    <tr>
+                        <td>Invoice #:</td>
+                        <td>INV-2023-001</td>
+                    </tr>
+                    <tr>
+                        <td>Date Issued:</td>
+                        <td>October 26, 2023</td>
+                    </tr>
+                    <tr>
+                        <td>Due Date:</td>
+                        <td>November 9, 2023</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Client Information -->
+        <div class="client-section">
+            <h3>BILL TO</h3>
+            <p><strong>Client Company Name</strong></p>
+            <p>Attn: John Smith (Project Manager)</p>
+            <p>456 Client Street</p>
+            <p>Boston, MA 02108</p>
+            <p>Email: john.smith@clientcompany.com</p>
+        </div>
+
+        <!-- Items Table -->
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th class="text-left">Sr#</th>
+                    <th class="text-left">Description</th>
+                    <th class="text-right">Qty</th>
+                    <th class="text-right">Unit Price</th>
+                    <th class="text-right">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Web Development Services - Frontend Implementation</td>
+                    <td class="text-right">20</td>
+                    <td class="text-right">$85.00</td>
+                    <td class="text-right">$1,700.00</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>UI/UX Design - Mobile App Interface</td>
+                    <td class="text-right">15</td>
+                    <td class="text-right">$95.00</td>
+                    <td class="text-right">$1,425.00</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Project Management - October 2023</td>
+                    <td class="text-right">1</td>
+                    <td class="text-right">$500.00</td>
+                    <td class="text-right">$500.00</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Premium WordPress Theme</td>
+                    <td class="text-right">1</td>
+                    <td class="text-right">$75.00</td>
+                    <td class="text-right">$75.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Totals Summary -->
+        <table class="summary-table">
+            <tr>
+                <td>Subtotal:</td>
+                <td class="text-right">$3,700.00</td>
+            </tr>
+            <tr>
+                <td>Tax (8.5%):</td>
+                <td class="text-right">$314.50</td>
+            </tr>
+            <tr>
+                <td>Discount (5%):</td>
+                <td class="text-right">-$185.00</td>
+            </tr>
+            <tr>
+                <td><strong>ADVANCE PAID:</strong></td>
+                <td class="text-right">-$1,000.00</td>
+            </tr>
+            <tr class="grand-total">
+                <td><strong>BALANCE DUE:</strong></td>
+                <td class="text-right"><strong>$2,829.50</strong></td>
+            </tr>
+        </table>
+
+        <!-- Notes Section -->
+        <div class="notes-section">
+            <h4>PAYMENT TERMS & NOTES</h4>
+            <p>• Payment due within 14 days of invoice date</p>
+            <p>• Make checks payable to: Your Company Name</p>
+            <p>• Wire Transfer Information: Bank Name, Account #: 123456789, Routing #: 987654321</p>
+            <p>• For questions about this invoice, please contact accounts@yourcompany.com</p>
+            <p>• Thank you for your business!</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>YOUR COMPANY NAME | www.yourcompany.com | (555) 123-4567</p>
+            <p>This invoice is automatically generated. Please pay by the due date.</p>
+        </div>
+    </div>
+</body>
+</html>
